@@ -24,6 +24,7 @@ import {
   initializeLoginUserName,
   initialzeIsLoggedIn,
 } from "../../redux/reducers/userSlice";
+import { saveTokenToLocalStorage } from "@/lib/authentication";
 
 type ModalButtonForLogInProps = {
   buttonText: string;
@@ -52,7 +53,10 @@ const ModalButtonForLogIn: React.FC<ModalButtonForLogInProps> = ({
     mutationFn: apiForLoginWithUserName,
     onSuccess: (result: ResponseTypeForLoginRequest) => {
       console.log("result : ", result);
+      dispatch(initializeLoginUserName(result.user_name));
       dispatch(initialzeIsLoggedIn(true));
+      // localStorage.setItem("accessToken", result.access_token);
+      saveTokenToLocalStorage(result.access_token);
       reset();
     },
     onError: (error: any) => {

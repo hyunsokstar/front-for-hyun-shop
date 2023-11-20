@@ -10,3 +10,26 @@ export interface ResponseTypeForLoginRequest {
   user_name: string;
   access_token: string;
 }
+
+
+export interface UserInfo {
+  id: number;
+  username: string;
+  email: string;
+  created_at: string;
+}
+
+export interface UserInfo {
+  id: number;
+  username: string;
+  email: string;
+  created_at: string;
+}
+
+export interface ResponseTypeForLoginCheckRequest {
+  status: string;
+  message: string;
+  user_info: UserInfo;
+}
+
+

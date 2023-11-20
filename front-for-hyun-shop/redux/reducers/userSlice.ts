@@ -14,8 +14,8 @@ const userSlice = createSlice({
   name: "userSlice",
   initialState,
   reducers: {
-    initializeLoginUserName(state) {
-      state.loginUserName = "";
+    initializeLoginUserName: (state, action) => {
+      state.loginUserName = action.payload;
     },
     initialzeIsLoggedIn(state, action: PayloadAction<boolean>) {
       state.isLoggedIn = action.payload;
@@ -25,5 +25,6 @@ const userSlice = createSlice({
 
 export const { initializeLoginUserName, initialzeIsLoggedIn } =
   userSlice.actions;
+
 export const userReducer = userSlice.reducer;
 export default userSlice.reducer;
